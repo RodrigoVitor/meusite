@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Responsivo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <style>
+        /* Adiciona um pouco de customização */
+        .menu-button {
+            transition: transform 0.3s;
+        }
+        .menu-button.open {
+            transform: rotate(90deg);
+        }
+        .whatsapp-button {
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .whatsapp-button:hover {
+            background-color: #25D366;
+            transform: scale(1.1);
+        }
+        .progress-bar .progress {
+            height: 100%;
+            width: 0%; /* Largura da barra de progresso (deve ser ajustada dinamicamente) */
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Menu de Navegação -->
+    <header>
+        <nav class="p-4 fixed bg-[#fff] w-full">
+            <div class="container mx-auto flex items-center justify-between">
+                <!-- Logo -->
+                <div class="text-[#d92cf9] text-2xl font-bold">
+                    RodrigoVitor
+                </div>
+    
+                <!-- Botão do Menu -->
+                <button class="text-[#d92cf9] lg:hidden menu-button" id="menu-toggle">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+    
+                <!-- Links do Menu -->
+                <div class="hidden lg:flex lg:items-center lg:space-x-4">
+                    <a href="#aboutme" class="text-[#6f6f6f] hover:text-[#d92cf9]">Sobre</a>
+                    <a href="#education" class="text-[#6f6f6f] hover:text-[#d92cf9]">Educação</a>
+                    <a href="#skills" class="text-[#6f6f6f] hover:text-[#d92cf9]">Habilidades</a>
+                    <a href="#experience" class="text-[#6f6f6f] hover:text-[#d92cf9]">Experiência</a>
+                    <a href="#portfolio" class="text-[#6f6f6f] hover:text-[#d92cf9]">Portfolio</a>
+                    <a href="#contact" class="text-[#6f6f6f] hover:text-[#d92cf9]">Contato</a>
+                </div>
+            </div>
+            
+            <!-- Menu Mobile -->
+            <div class="lg:hidden hidden fixed inset-0 bg-blue-600 bg-opacity-75 flex items-center justify-center" id="menu-mobile">
+                <div class="bg-white rounded-lg shadow-lg p-6 w-3/4 max-w-md">
+                    <button class="absolute top-4 right-4 text-[#d92cf9]" id="menu-close">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                    <ul class="space-y-4 flex flex-col">
+                        <li><a href="#aboutme" class="menu-link text-[#6f6f6f] hover:text-[#d92cf9]">Sobre</a></li>
+                    <li><a href="#education" class="menu-link text-[#6f6f6f] hover:text-[#d92cf9]">Educação</a></li>
+                    <li><a href="#skills" class="menu-link text-[#6f6f6f] hover:text-[#d92cf9]">Habilidades</a></li>
+                    <li><a href="#experience" class="menu-link text-[#6f6f6f] hover:text-[#d92cf9]">Experiência</a></li>
+                    <li><a href="#portfolio" class="menu-link text-[#6f6f6f] hover:text-[#d92cf9]">Portfólio</a></li>
+                    <li><a href="#contact" class="menu-link text-[#6f6f6f] hover:text-[#d92cf9]">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="bg-[url('./src/img/background.jpg')] bg-no-repeat bg-cover min-h-[650px] flex flex-col justify-center items-center">
+        <h1 class="text-white font-bold text-5xl">Oi, Eu sou <br> Rodrigo Vitor</h1>
+        <p class="text-white text-xl mt-4 font-bold">Programador Web Júnior</p>
+        <a href="https://wa.me/5535997401598" target="_blank" class=" mt-4 whatsapp-button bg-green-500 text-white font-semibold py-2 px-4 rounded shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+            Fale comigo no WhatsApp
+        </a>
+    </main>
+
+    <section class="p-4" id="aboutme">
+        <div>
+            <h3 class="text-center text-3xl">Sobre</h3>
+            <div class="flex flex-col md:flex-row md:justify-around mt-4">
+                <div class="md:w-2/4 flex flex-col justify-between">
+                    <div>
+                        <p>Olá, meu nome é Rodrigo Vitor e sou apaixonado por programação. 🚀</p>
+                        <p>Minas Gerais é meu lar, mas minha paixão pela programação e tecnologia transcende fronteiras.</p>
+                        <p class="mb-2 mt-2">Minha paixão por programação começou durante o ensino médio, em 2017, quando minha escola estadual implementou o novo currículo e eu escolhi o Ensino Médio Técnico em Informática. Foi nesse período que tive meus primeiros contatos com a programação. Após minha formatura no final de 2020, procurei me aprofundar mais no campo e iniciei diversos cursos online, como Curso em Vídeo, B7Web e Hora de Codar. Esses cursos foram fundamentais para meu desenvolvimento na área.</p>
+                        <p class="mb-2">No entanto, o caminho não foi sempre fácil. Entre meados de 2021 e a metade de 2022, passei por um período de desânimo e afastamento da programação. Meu mindset ainda não estava maduro, e meu estado psicológico não estava ideal. Em maio de 2022, ingressei no curso de Engenharia da Computação na Faculdade Unimar (Universidade de Marília), na modalidade EAD. Foi durante os primeiros meses da faculdade que minha paixão por tecnologia e programação renasceu com força renovada. Apesar das tentativas de desviar-me, percebi que não há como fugir do que amamos; a paixão sempre nos acompanha.</p>
+                        <p>Em junho de 2023, consegui meu primeiro estágio como programador PHP utilizando o framework Laravel. Embora o estágio tenha durado apenas seis meses devido à decisão da empresa de não manter mais estagiários, essa experiência foi extremamente valiosa. Atualmente, não estou trabalhando na área, mas continuo aprimorando minhas habilidades com o objetivo de, um dia, realizar meu sonho de trabalhar na área que tanto amo.</p>
+                        <p class="mt-2">Sempre fui um autodidata, acreditando que a disciplina e a dedicação são essenciais para o sucesso. Não vejo a programação como uma competição com os outros, mas como uma jornada de superação pessoal. Tenho uma grande paixão por ajudar os outros e entendo que esse caminho não é fácil. No entanto, mantenho-me firme e determinado na busca dos meus objetivos.</p>
+                    </div>
+                    
+                    <div class="flex gap-16 border-t-2 py-4 border-[#ccc]">
+                        <p class="flex text-[#616a82] font-bold flex-col">Telefone <span class="font-semibold">35 99740-1598</span></p>
+                        <p class="flex text-[#616a82] font-bold flex-col">email <span class="font-semibold">rodrigovitordev2024gmail.com</span></p>
+                    </div>
+                </div>
+                <div>
+                    <img src="./src/img/image.png" class="w-96" alt="imagem perfil">
+                    <div class="flex gap-4 mt-2 items-center justify-center">
+                        <a href="https://www.instagram.com/rodrigovitor.dev/" target="_blank" class="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white font-semibold p-4 rounded-full shadow-md flex items-center space-x-2 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50 justify-center w-8">
+                            <i class="fab fa-instagram fa-lg"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/rodrigo-vitor-8bb66b317/" target="_blank" class="linkedin-button bg-blue-700 text-white font-semibold p-4 rounded-full shadow-md flex items-center space-x-2 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 w-8 justify-center">
+                            <i class="fab fa-linkedin fa-lg"></i>
+                        </a>
+                        <a href="https://github.com/RodrigoVitor" target="_blank" class="linkedin-button bg-stone-800 text-white font-semibold p-4 rounded-full shadow-md flex items-center space-x-2 hover:bg-stone-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 w-8 justify-center">
+                            <i class="fab fa-github fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto mt-4 px-4" id="education">
+        <h3 class="text-center text-3xl mb-4">Educação</h3>
+        <div class="space-y-8">
+            <!-- Formação 1 -->
+            <div class="card bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-gray-900">Engenharia da Computação</h3>
+                <p class="text-gray-600">Universidade de Marília</p>
+                <p class="text-gray-500 text-sm">Maio 2022 - Cursando</p>
+                <p class="text-gray-700 mt-4"></p>
+            </div>
+
+            <!-- Formação 2 -->
+            <div class="card bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-gray-900">Ensino Médio e Técnico para Informática</h3>
+                <p class="text-gray-600">Escola Estadual Sanico Teles</p>
+                <p class="text-gray-500 text-sm">Fev 2017 - Dez 2020</p>
+                <p class="text-gray-700 mt-4">Certificação focada em habilidades práticas de desenvolvimento web, incluindo HTML, CSS, JavaScript e PHP</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="p-4" id="skills">
+        <h3 class="text-center text-3xl mt-4">Habilidades</h3>
+        <div class="w-3/5 gap-4 m-auto grid md:grid-cols-2">
+            <div>
+                <p class="text-[#676a81]">HTML5</p>
+                <div class="progress-bar w-full h-3 bg-[#e5e7eb] rounded-lg relative">
+                    <div class="progress bg-[#b636ff]" style="width: 80%;"></div> <!-- Ajuste a largura conforme necessário -->
+                </div>
+            </div>
+            <div>
+                <p class="text-[#676a81]">CSS3</p>
+                <div class="progress-bar w-full h-3 bg-[#e5e7eb] rounded-lg relative">
+                    <div class="progress bg-[#b636ff]" style="width: 75%;"></div> <!-- Ajuste a largura conforme necessário -->
+                </div>
+            </div>
+            <div>
+                <p class="text-[#676a81]">Javascript</p>
+                <div class="progress-bar w-full h-3 bg-[#e5e7eb] rounded-lg relative">
+                    <div class="progress bg-[#b636ff]" style="width: 60%;"></div> <!-- Ajuste a largura conforme necessário -->
+                </div>
+            </div>
+            <div>
+                <p class="text-[#676a81]">PHP</p>
+                <div class="progress-bar w-full h-3 bg-[#e5e7eb] rounded-lg relative">
+                    <div class="progress bg-[#b636ff]" style="width: 70%;"></div> <!-- Ajuste a largura conforme necessário -->
+                </div>
+            </div>
+            <div>
+                <p class="text-[#676a81]">React</p>
+                <div class="progress-bar w-full h-3 bg-[#e5e7eb] rounded-lg relative">
+                    <div class="progress bg-[#b636ff]" style="width: 15%;"></div> <!-- Ajuste a largura conforme necessário -->
+                </div>
+            </div>
+            <div>
+                <p class="text-[#676a81]">Laravel</p>
+                <div class="progress-bar w-full h-3 bg-[#e5e7eb] rounded-lg relative">
+                    <div class="progress bg-[#b636ff]" style="width: 36%;"></div> <!-- Ajuste a largura conforme necessário -->
+                </div>
+            </div>
+            <div>
+                <p class="text-[#676a81]">Typescript</p>
+                <div class="progress-bar w-full h-3 bg-[#e5e7eb] rounded-lg relative">
+                    <div class="progress bg-[#b636ff]" style="width: 50%;"></div> <!-- Ajuste a largura conforme necessário -->
+                </div>
+            </div>
+            <div>
+                <p class="text-[#676a81]">MySql</p>
+                <div class="progress-bar w-full h-3 bg-[#e5e7eb] rounded-lg relative">
+                    <div class="progress bg-[#b636ff]" style="width: 45%;"></div> <!-- Ajuste a largura conforme necessário -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="p-4" id="experience">
+        <div class="max-w-3xl mx-auto">
+            <h3 class="text-center text-3xl mt-4">Experiência</h3>
+            <div class="space-y-6 mt-4">
+                <!-- Experiência 1 -->
+                <div class="timeline-item card bg-white p-4 rounded-lg">
+                    <div class="timeline-item-content">
+                        <h3 class="text-xl font-semibold text-gray-800">Recepcionista em Hotel</h3>
+                        <p class="text-gray-600">Crisal Hotel</p>
+                        <p class="text-gray-500">fev 2023 - Atualmente</p>
+                        <p class="mt-2 text-gray-700">
+                            Responsável pelo agendamento de reservas por e-mail, WhatsApp e telefone, pela emissão de notas fiscais e pela criação e manutenção de planilhas no Excel.
+                        </p>
+                    </div>
+                </div>
+                <!-- Experiência 2 -->
+                <div class="timeline-item card bg-white p-4 rounded-lg">
+                    <div class="timeline-item-content">
+                        <h3 class="text-xl font-semibold text-gray-800">Desenvolvedor de back end</h3>
+                        <p class="text-gray-600">Imovel Guide</p>
+                        <p class="text-gray-500">Jun 2023 - Dez 2023</p>
+                        <p class="mt-2 text-gray-700">
+                            Desenvolvimento, programação, codificando e revisando códigos; Melhorias de performance de fluxos existentes; Alteração de códigos, consultas e atualizações no banco; Resolução de bugs/e ou problemas. <br>
+                            Tecnologias: PHP · Laravel · PhpMyAdmin · Back-end
+                        </p>
+                    </div>
+                </div>
+                <!-- Adicione mais experiências conforme necessário -->
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3 class="text-center text-3xl mt-4">Portfolio</h3>
+        <div class="max-w-6xl mx-auto mt-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Projeto 1 -->
+                <a href="https://focusappdev.netlify.app/" target="_blank">
+                    <div class="portfolio-item">
+                        <img src="./src/img/focusapp.png" alt="Projeto 1">
+                        <div class="portfolio-item-overlay">
+                            <h3 class="text-lg font-semibold">Focus</h3>
+                            <p class="mt-2">Website para lhe ajudar a ter foco, você conclui uma tarefa ganha xp e com esse xp adquiro recompensas que você mesmo escolhe</p>
+                            <p class="mt-2">Tecnologias: <span class="text-gray-600">React e Typescript</span></p>
+                        </div>
+                    </div>
+                </a>
+                <!-- Projeto 2 -->
+                <a href="https://github.com/RodrigoVitor/Gerenciador-de-notas" target="_blank">
+                    <div class="portfolio-item">
+                        <img src="./src/img/notes.png" alt="Projeto 2">
+                        <div class="portfolio-item-overlay">
+                            <h3 class="text-lg font-semibold">Gerenciador de notas</h3>
+                            <p class="mt-2">Aplicativo de gerenciamento de notas onde os usuários podem se cadastrar, fazer login e criar, editar e excluir suas notas. As notas podem ser organizadas por categorias, permitindo que os usuários mantenham suas informações organizadas e acessíveis.</p>
+                            <p class="mt-2">Tecnologias: <span class="text-gray-600">HTML, CSS, PHP, LARAVEL, MySql</span></p>
+                        </div>
+                    </div>
+                </a>
+                <!-- Projeto 3 -->
+                <!-- <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/600x400" alt="Projeto 3">
+                    <div class="portfolio-item-overlay">
+                        <h3 class="text-lg font-semibold">Em breve</h3>
+                        <p class="mt-2"></p>
+                    </div>
+                </div> -->
+                <!-- Adicione mais projetos conforme necessário -->
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-16" id="contact">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-center text-3xl mt-4">Entre em contato</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Informações de Contato -->
+                <div class="mt-4">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Informações de Contato</h3>
+                    <p class="text-gray-700 mb-4">
+                        Se você tiver alguma dúvida ou deseja entrar em contato comigo, você pode me encontrar através dos seguintes meios:
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center text-gray-600">
+                            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 6h18M3 14h18m-6 8V4"></path>
+                            </svg>
+                            <span>Email: <a href="mailto:rodrigovitordev2024@gmail.com" class="text-blue-600 hover:underline">rodrigovitordev2024@gmail.com</a></span>
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 12l9 9 9-9-9-9-9 9z"></path>
+                            </svg>
+                            <span>Telefone: <a href="tel:+35997401598" class="text-blue-600 hover:underline">+35 99740-1598</a></span>
+                        </li>
+                        <!-- <li class="flex items-center text-gray-600">
+                            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3h14a1 1 0 011 1v16a1 1 0 01-1 1H5a1 1 0 01-1-1V4a1 1 0 011-1z"></path>
+                            </svg>
+                            <span>Endereço: Rua Exemplo, 123, Cidade, Estado, País</span>
+                        </li> -->
+                    </ul>
+                </div>
+                <!-- Formulário de Contato -->
+                <div class="mt-4">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Envie uma Mensagem</h3>
+                    <form onsubmit="sendEmail(event)" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-gray-700">Nome:</label>
+                            <input type="text" id="name" name="from_name" required class="mt-1 p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700">Email:</label>
+                            <input type="email" id="email" name="reply_to" required class="mt-1 p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700">Mensagem:</label>
+                            <textarea id="message" name="message" rows="4" required class="mt-1 p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        <button type="submit" class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-8 mt-10">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-between">
+                <!-- Seção de Links -->
+                <div class="w-full md:w-1/3 mb-6 md:mb-0">
+                    <h5 class="text-lg font-semibold mb-4">Links</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#aboutme" class="text-white hover:text-[#d92cf9]">Sobre</a></li>
+                        <li><a href="#education" class="text-white hover:text-[#d92cf9]">Educação</a></li>
+                        <li><a href="#skills" class="text-white hover:text-[#d92cf9]">Habilidades</a></li>
+                        <li><a href="#experience" class="text-white hover:text-[#d92cf9]">Experiência</a></li>
+                        <li><a href="#portfolio" class="text-white hover:text-[#d92cf9]">Portfolio</a></li>
+                        <li><a href="#portfolio" class="text-white hover:text-[#d92cf9]">Portfolio</a></li>
+                    </ul>
+                </div>
+
+                <!-- Seção de Contato -->
+                <div class="w-full md:w-1/3 mb-6 md:mb-0">
+                    <h5 class="text-lg font-semibold mb-4">Contato</h5>
+                    <p class="mb-2">Email: <a href="mailto:contato@exemplo.com" class="hover:underline">contato@exemplo.com</a></p>
+                    <p>Telefone: <a href="tel:+5511999999999" class="hover:underline">(11) 99999-9999</a></p>
+                </div>
+
+                <!-- Seção de Direitos Autorais -->
+                <div class="w-full md:w-1/3 text-center md:text-right">
+                    <p>&copy; 2024 Sua Empresa. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5535997401598" target="_blank" class="whatsapp-button fixed bottom-4 right-4 bg-green-500 text-white rounded-full p-4 shadow-lg flex items-center justify-center">
+        <i class="fab fa-whatsapp fa-2x"></i>
+    </a>
+    <script src="./src/index.js"></script>
+    <script src="./src/sendEmail.js"></script>
+</body>
+</html>
